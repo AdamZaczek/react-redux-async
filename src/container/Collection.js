@@ -1,28 +1,47 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CollectionItem from '../presentational/CollectionItem';
+import FetchError from '../presentational/FetchError';
 import { fetchCollection } from '../actions/fetchCollection';
 
-const mapCollectionItems = collection =>
-  collection.map(collectionItem => <CollectionItem key={collectionItem.cardId} item={collectionItem} />)
+const collectionEndpoint = 'http://localhost:3001/collection';
+
+const mapCollectionItems = collection => {
+  return collection.map(collectionItem =>
+    <CollectionItem
+      key={collectionItem.cardId}
+      item={collectionItem}
+    />
+  )
+}
 
 class Collection extends Component {
   componentDidMount() {
-    this.props.fetchCollection('http://localhost:3000/collection');
+    this.props.fetchCollection(collectionEndpoint);
   }
 
+  fetchCollection = () => this.props.fetchCollection(collectionEndpoint);
+
   render() {
-    const { collection } = this.props;
+    const { collection, isFetching, errorMessage } = this.props;
     return (
       <div>
         {
-          collection.length ?
-          <div>
-            <h2>All Collection:</h2>
-            {mapCollectionItems(this.props.collection)}
-          </div>
-          :
+          errorMessage && !collection.length &&
+            <FetchError
+              message={errorMessage.message}
+              onRetry={this.fetchCollection}
+            />
+        }
+        {
+          !errorMessage && !collection.length &&
           <div>Loading data...</div>
+        }
+        {
+          collection.length && !isFetching &&
+          <div>
+            {mapCollectionItems(collection)}
+          </div>
         }
       </div>
     );
@@ -30,7 +49,9 @@ class Collection extends Component {
 }
 
 const mapStateToProps = state => ({
-  collection: state.collection.collection,
+  collection: state.collection,
+  isFetching: state.isFetching,
+  errorMessage: state.errorMessage,
 });
 
 const mapDispatchToProps = dispatch => ({

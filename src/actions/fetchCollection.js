@@ -1,14 +1,30 @@
-import { FETCH_COLLECTION } from '../constants/actionTypes';
+import {
+  FETCH_COLLECTION,
+  FETCH_COLLECTION_FAILURE,
+  FETCH_COLLECTION_SUCCESS
+} from '../constants/actionTypes';
 
-const fetchCollectionSuccess = collection => {
-  return {
-    type: FETCH_COLLECTION,
+const requestCollection = () => ({
+  type: FETCH_COLLECTION,
+});
+
+const fetchCollectionSuccess = collection => ({
+    type: FETCH_COLLECTION_SUCCESS,
     collection,
-  }
-};
+});
+
+const fetchCollectionFailure = errorMessage => ({
+  type: FETCH_COLLECTION_FAILURE,
+  errorMessage,
+});
 
 export const fetchCollection = url => async dispatch => {
-    const rateRes = await fetch(url);
-    const resToJson = await rateRes.json();
-    dispatch(fetchCollectionSuccess(resToJson));
+    try {
+      dispatch(requestCollection());
+      const getCollection = await fetch(url);
+      const getCollectionToJson = await getCollection.json();
+      dispatch(fetchCollectionSuccess(getCollectionToJson));
+    } catch(err) {
+      dispatch(fetchCollectionFailure(err))
+    }
 };
