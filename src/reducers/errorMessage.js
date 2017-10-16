@@ -7,7 +7,6 @@ import {
 export default (state = null, action) => {
   switch (action.type) {
     case FETCH_COLLECTION_FAILURE:
-    console.log(action)    
       return action.errorMessage;
     case FETCH_COLLECTION_SUCCESS:
     case FETCH_COLLECTION:

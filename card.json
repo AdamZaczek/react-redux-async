@@ -1,0 +1,45 @@
+{
+  "collection": [{
+    "cardId": "13js3",
+    "header": {
+      "cardId": "13js3",
+      "user": {
+        "userID": 1,
+        "name": "Some user",
+        "image": "path/to/user-1.png",
+        "action": "shared this contact",
+        "timestamp": "2017-07-20T08:46:32Z"
+      }
+    },
+    "body": {
+      "cardId": "13js3",
+      "user": {
+        "userId": 2,
+        "name": "Another user",
+        "image": "path/to/user-2.png",
+        "title": "QA expert",
+        "company": "@company"
+      },
+      "interactions": {
+        "type": "add_contact",
+        "text": "Add",
+        "color": "#b0d400"
+      }
+    },
+    "footer": {
+      "cardId": "13js3",
+      "interactions": {
+        "comment": {
+          "count": 0,
+          "comments": []
+        },
+        "like": {
+          "count": 0
+        },
+        "share": {
+          "url": "share/url"
+        }
+      }
+    }
+  }]
+}
