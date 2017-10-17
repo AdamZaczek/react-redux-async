@@ -1,0 +1,36 @@
+.cardHeader {
+  margin-bottom: 10px;
+}
+
+.cardHeader__border {
+  margin: 0 -20px 10px;
+}
+
+.cardHeader__border {
+  border-bottom: 1px solid rgba(201, 186, 186, 0.3);  
+}
+
+.cardHeader__image {
+  margin-bottom: 10px;
+  width: 80px;
+}
+
+.cardHeader__name {
+  display: inline-block;
+  color: #616588;
+}
+
+.cardHeader__name {
+  font-weight: 600;
+}
+
+.cardHeader__date {
+  color: #777777;
+}
+
+.cardHeader__text {
+  margin-left: 20px;
+  display: inline-block;
+  position: relative;
+  top: -30px;
+}

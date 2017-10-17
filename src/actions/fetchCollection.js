@@ -4,13 +4,20 @@ import {
   FETCH_COLLECTION_SUCCESS
 } from '../constants/actionTypes';
 
+const getCollection = collection => collection.map(collectionItem => collectionItem.cardId);
+const getCollectionByIds = collection => collection.reduce((collectionbyId, obj) => {
+  collectionbyId[obj.cardId] = {...obj};
+  return collectionbyId;  
+}, {});
+
 const requestCollection = () => ({
   type: FETCH_COLLECTION,
 });
 
 const fetchCollectionSuccess = collection => ({
     type: FETCH_COLLECTION_SUCCESS,
-    collection,
+    collection: getCollection(collection),
+    collectionByIds: getCollectionByIds(collection),
 });
 
 const fetchCollectionFailure = errorMessage => ({
@@ -28,3 +35,11 @@ export const fetchCollection = url => async dispatch => {
       dispatch(fetchCollectionFailure(err))
     }
 };
+
+export const getCollectionItemsIds = state => state.collection.collection;
+export const getCollectionData = state => {
+  const ids = getCollectionItemsIds(state);
+  return ids.map(id => state.collection.collectionByIds[id]); 
+};
+
+

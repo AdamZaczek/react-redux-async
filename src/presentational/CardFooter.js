@@ -1,10 +1,11 @@
 import React from 'react';
+import './cardFooter.css';
 
 const CardFooter = () => (
-  <div>
-    <img src={require('../assets/thumbs-up.png')} alt="Thumbs up"></img>
-    <img src={require('../assets/comment.png')} alt="Comment"></img>
-    <img src={require('../assets/share.png')} alt="Share"></img>
+  <div className="cardFooter">
+    <img className="cardFooter__thumbs" src={require('../assets/thumbs-up.png')} alt="Thumbs up"></img>
+    <img className="cardFooter__comment" src={require('../assets/comment.png')} alt="Comment"></img>
+    <img className="cardFooter__share" src={require('../assets/share.png')} alt="Share"></img>
   </div>
 );
 

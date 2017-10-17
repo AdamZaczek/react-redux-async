@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { interact } from '../actions/interact';
+import CardBodyItem from '../presentational/CardBodyItem';
 
 class CardBody extends Component {
-
   interact = (type, id) => {
     this.props.interact(type, id);
   }
@@ -17,26 +17,17 @@ class CardBody extends Component {
       isInteracting,
     } = this.props;
     return (
-      <div className='cardBody'>
-        <img src={require('../' + image)} alt="Users avatar"></img>
-        <div>
-          {name}
-        </div>
-        <div>
-          {title}
-        </div>
-        <div>
-          {company}
-        </div>
-        <button disabled={isInteracting} onClick={() => this.interact(type, userId)}>
-          <div>{
-            isInteracting ?
-            <img src={require('../assets/spinner.gif')} alt="Spinning loader"></img>
-              :
-              text
-            }
-          </div>
-        </button>
+      <div>
+        <CardBodyItem
+          image={image}
+          name={name}
+          title={title}
+          company={company}
+          isInteracting={isInteracting}
+          onClick={() => this.interact(type, userId)}
+          text={text}
+          color={color}
+        />
       </div>
     )
   }

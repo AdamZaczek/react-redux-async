@@ -1,0 +1,30 @@
+.cardBodyItem {
+  margin-top: 20px;
+}
+
+.cardBodyItem__image {
+  margin-bottom: 10px;
+  width: 180px;
+}
+
+.cardBodyItem__name {
+  display: inline-block;
+  color: #616588;
+  font-weight: 600;
+}
+
+.cardBodyItem__company {
+  color: #777777;
+}
+
+.cardBodyItem__name,
+.cardBodyItem__title,
+.cardBodyItem__company {
+  margin-bottom: 7px;
+}
+
+.cardBodyItem__text {
+  margin-left: 20px;
+  display: inline-block;
+  vertical-align:top;
+}

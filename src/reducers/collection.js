@@ -4,12 +4,17 @@ import {
 
 const initialState = {
   collection: [],
+  collectionByIds: [],
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case FETCH_COLLECTION_SUCCESS:
-      return action.collection
+      const { collection, collectionByIds } = action;
+      return {
+        collection,
+        collectionByIds,
+      };
     default:
       return state;
   }

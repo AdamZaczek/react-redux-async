@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CollectionItem from '../presentational/CollectionItem';
 import FetchError from '../presentational/FetchError';
-import { fetchCollection } from '../actions/fetchCollection';
+import {
+  fetchCollection,
+  getCollectionData
+} from '../actions/fetchCollection';
 
 const collectionEndpoint = 'http://localhost:3001/collection';
 
@@ -48,11 +51,13 @@ class Collection extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  collection: state.collection,
-  isFetching: state.isFetching,
-  errorMessage: state.errorMessage,
-});
+
+const mapStateToProps = state => {
+  return {
+    collection: getCollectionData(state),
+    isFetching: state.isFetching,
+    errorMessage: state.errorMessage,
+}};
 
 const mapDispatchToProps = dispatch => ({
   fetchCollection: url => dispatch(fetchCollection(url)),

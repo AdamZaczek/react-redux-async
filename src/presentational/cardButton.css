@@ -1,0 +1,15 @@
+.cardButton {
+  width: 55px;
+  height: 40px;
+  position: relative;
+  float: right;
+  margin-right: 20px;
+  vertical-align: top;
+  border-radius: 6px;
+  border: none;
+  font-weight: 700;
+}
+
+.cardButton__spinner {
+  width: 100%;
+}
