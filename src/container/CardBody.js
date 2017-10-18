@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { interact } from '../actions/interact';
 import CardBodyItem from '../presentational/CardBodyItem';
+import { isInteracting } from '../reducers/isInteracting';
 
 class CardBody extends Component {
   interact = (type, id) => {
@@ -34,7 +35,7 @@ class CardBody extends Component {
 }
 
 const mapStateToProps = state => ({
-  isInteracting: state.isInteracting,
+  isInteracting: isInteracting(state),
 })
 
 const mapDispatchToProps = dispatch => ({

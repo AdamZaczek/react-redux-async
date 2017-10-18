@@ -20,3 +20,9 @@ export default (state = initialState, action) => {
   }
 };
 
+const getCollectionItemsIds = state => state.collection.collection;
+export const getCollectionData = state => {
+  const ids = getCollectionItemsIds(state);
+  return ids.map(id => state.collection.collectionByIds[id]); 
+};
+

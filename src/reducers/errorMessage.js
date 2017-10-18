@@ -15,3 +15,5 @@ export default (state = null, action) => {
       return state;
   }
 };
+
+export const getErrorMessage = state => state.errorMessage;

@@ -15,3 +15,5 @@ export default (state = false, action) => {
       return state;
   }
 };
+
+export const isInteracting = state => state.isInteracting;
